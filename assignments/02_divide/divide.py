@@ -22,33 +22,13 @@ def get_args():
                                         type=int,
                                         help='Integers to divide')
 
-                    # parser.add_argument('-a',
-                    #'--arg',
-                    #help='A named string argument',
-                    #metavar='str',
-                    #type=str,
-                    #default='')
-
-                    #parser.add_argument('-i',
-                    #'--int',
-                    #help='A named integer argument',
-                    #metavar='int',
-                    #type=int,
-                    #default=0)
-
-                    #parser.add_argument('-f',
-                    #'--file',
-                    #help='A readable file',
-                    #metavar='FILE',
-                    #type=argparse.FileType('rt'),
-                    #default=None)
-
-                    #parser.add_argument('-o',
-                    #'--on',
-                    #help='A boolean flag',
-                    #action='store_true')
+                    #return parser.parse_args()
+                    
+                    
 
                     return parser.parse_args()
+
+                    
 
 
 # --------------------------------------------------
@@ -58,7 +38,12 @@ def main():
                     args = get_args()
                     integer = args.integer
 
+                    if integer[1] == 0:
+                            parser.error('Cannot divide by zero, dum-dum!')
+                    return args
+                    
                     print(f'{integer[0]} / {integer[1]} = {integer[0] // integer[1]}')
+                   
                     #if integer[1] == 0:
                         #print('Cannot divide by zero, dum-dum!')
                     #else:
