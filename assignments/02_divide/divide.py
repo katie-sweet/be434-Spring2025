@@ -10,46 +10,42 @@ import argparse
 
 # --------------------------------------------------
 def get_args():
-                    """Get command-line arguments"""
+    """Get command-line arguments"""
 
-                    parser = argparse.ArgumentParser(
-                        description='Divide Integers',
-                        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description="Divide Integers",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
 
-                    parser.add_argument('integer',
-                                        metavar='INT',
-                                        nargs=2,
-                                        type=int,
-                                        help='Integers to divide')
+    parser.add_argument(
+        "integer", metavar="INT", nargs=2, type=int, help="Integers to divide"
+    )
 
-                    #return parser.parse_args()
-                    
-                    
-
-                    return parser.parse_args()
-
-                    
+    return parser.parse_args()
 
 
 # --------------------------------------------------
 def main():
-                    """Divide Integers"""
+    """Divide Integers"""
 
-                    args = get_args()
-                    integer = args.integer
+    args = get_args()
+    parser = argparse.ArgumentParser(
+        description="Divide Integers",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    integer = args.integer
 
-                    if integer[1] == 0:
-                            parser.error('Cannot divide by zero, dum-dum!')
-                    return args
-                    
-                    print(f'{integer[0]} / {integer[1]} = {integer[0] // integer[1]}')
-                   
-                    #if integer[1] == 0:
-                        #print('Cannot divide by zero, dum-dum!')
-                    #else:
-                        #print(f'{integer[0]} / {integer[1]} = {integer[0] // integer[1]}')
+    if integer[1] == 0:
+        parser.error("Cannot divide by zero, dum-dum!")
+
+    print(f"{integer[0]} / {integer[1]} = {integer[0] // integer[1]}")
+
+    # if integer[1] == 0:
+    # print('Cannot divide by zero, dum-dum!')
+    # else:
+    # print(f'{integer[0]} / {integer[1]} = {integer[0] // integer[1]}')
 
 
 # --------------------------------------------------
-if __name__ == '__main__':
-                    main()
+if __name__ == "__main__":
+    main()
