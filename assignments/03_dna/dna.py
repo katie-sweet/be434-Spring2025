@@ -27,17 +27,16 @@ def main():
     """Tetranucleotide frequency"""
 
     args = get_args()
-    DNA = args.DNA
+    dna = args.DNA
 
-    for n in DNA:
-        num_A = DNA.count("A")
-        num_C = DNA.count("C")
-        num_G = DNA.count("G")
-        num_T = DNA.count("T")
+    a = dna.count("A")
+    c = dna.count("C")
+    g = dna.count("G")
+    t = dna.count("T")
 
     # print(DNA)
     # print(num_A, num_C, num_G, num_T)
-    print(f"{num_A} {num_C} {num_G} {num_T}")
+    print(f"{a} {c} {g} {t}")
 
 
 # --------------------------------------------------
