@@ -2,7 +2,7 @@
 """
 Author : Ken Youens-Clark <kyclark@gmail.com>
 Date   : 2021-10-04
-Purpose: Rock the Casbah
+Purpose: Emulate wc (word count)
 """
 
 import argparse
@@ -15,7 +15,7 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Rock the Casbah',
+        description='Emulate wc (word count)',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('files',
@@ -30,7 +30,7 @@ def get_args():
 
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
+    """Emulate wc (word count)"""
 
     args = get_args()
     total_lines = 0
