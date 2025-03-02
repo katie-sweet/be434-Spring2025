@@ -1,0 +1,34 @@
+~/.../assignments/05_gc$ make test
+pytest -xv test.py cgc.py
+========================================================== test session starts ==========================================================
+platform linux -- Python 3.12.7, pytest-8.3.4, pluggy-1.5.0 -- /nix/store/nqlc7ymyglrsfx1hlssssq6zzy0hmk2c-python-wrapped-0.1.0/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/runner/workspace/assignments/05_gc
+plugins: pylint-0.21.0, mypy-0.10.3, flake8-1.3.0
+collected 6 items                                                                                                                       
+
+test.py::test_exists PASSED                                                                                                       [ 16%]
+test.py::test_usage PASSED                                                                                                        [ 33%]
+test.py::test_bad_input PASSED                                                                                                    [ 50%]
+test.py::test_good_input1 FAILED                                                                                                  [ 66%]
+
+=============================================================== FAILURES ================================================================
+___________________________________________________________ test_good_input1 ____________________________________________________________
+
+    def test_good_input1() -> None:
+        """ Works on good input """
+    
+        rv, out = getstatusoutput(f'{PRG} {SAMPLE1}')
+        assert rv == 0
+>       assert out == 'Rosalind_0808 60.919540'
+E       AssertionError: assert 'Rosalind_0808 61.666667' == 'Rosalind_0808 60.919540'
+E         
+E         - Rosalind_0808 60.919540
+E         + Rosalind_0808 61.666667
+
+test.py:48: AssertionError
+======================================================== short test summary info ========================================================
+FAILED test.py::test_good_input1 - AssertionError: assert 'Rosalind_0808 61.666667' == 'Rosalind_0808 60.919540'
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+====================================================== 1 failed, 3 passed in 0.51s ======================================================
+make: *** [Makefile:4: test] Error 1

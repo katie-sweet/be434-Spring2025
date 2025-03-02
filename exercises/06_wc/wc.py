@@ -61,3 +61,70 @@ def main():
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
+
+
+# For cgc.py:
+'''for fh in file:
+    gc = 0
+    for line in fh:
+                        if char[0] == '<' :
+                                            ID = line[1:]
+                        else:
+                                            seq = line.strip()
+                                            gc = gc + seq.count('G') + seq.count('C')
+                                            gc_content = gc / len(seq) * 100
+                                            print(f'{ID} {gc_content:.1f}')'''
+
+ ''' for line in file:
+           seq = line.strip()
+           if seq:  # Check if the line is not empty
+               gc = seq.count('G') + seq.count('C')
+               gc_content = gc / len(seq) * 100
+               print(f'{seq[:10]} {gc_content:.1f}')  # Display an identifier and GC content'''
+
+for line in file:
+           seq = line.strip()
+           if seq[0] == '>':
+                               ID = seq[1:]
+           else:
+               gc = seq.count('G') + seq.count('C')
+               gc_content = gc / len(seq) * 100
+               #print(f'{ID} {gc_content:.6f}')
+
+
+# 5:58pm
+for line in file:
+    seq = line.strip()
+    if seq[0] == '>':
+                        ID = seq[1:]
+
+    else:
+                        gc = seq.count('G') + seq.count('C')
+                        gc_content = gc / len(seq) * 100
+    for i in file:
+                          if ID[i+1] > ID[i]:
+                                              ID = ID[i+1]
+                          else:
+                                              ID = ID[i]
+                          if ID[i+2] > ID[i+1]:
+                                              ID = ID[i+2]
+                          else:
+                                              ID = ID[i+1]
+    print(f'{ID} {gc_content:.6f}')
+
+
+# 6:34pm
+highest_gc_content = 0.0
+highest_gc_id = ""
+for line in file:
+                    seq = line.strip()
+                    #seq = line
+                    if seq.startswith('>'):
+                            ID = seq[1:]  # Store the ID without the '>'
+                    else:
+                                        gc = 0 + seq.count('G') + seq.count('C')
+                                        gc_content = gc / len(seq.strip()) * 100
+                                        if gc_content > highest_gc_content:
+                                                            highest_gc_content = gc_content
+                                                            highest_gc_id = ID
+print(f'{highest_gc_id} {highest_gc_content:.6f}')

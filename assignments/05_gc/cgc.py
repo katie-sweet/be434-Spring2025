@@ -6,8 +6,6 @@ Purpose: Compute GC content
 """
 
 import argparse
-import sys
-from typing import TYPE_CHECKING
 
 
 # --------------------------------------------------
@@ -34,35 +32,28 @@ def main():
     args = get_args()
     file = args.FILE
 
-    for fh in file:
-      gc = 0
-      for line in fh:
-                          if char[0] == '<' :
-                                              ID = line[1:]
-                          else:
-                                              seq = line.strip()
-                                              gc = gc + seq.count('G') + seq.count('C')
-                                              gc_content = gc / len(seq) * 100
-                                              print(f'{ID} {gc_content:.1f}')
+    highest_gc_content = 0.0
+    highest_gc_id = ""
+    ID = ''
+    for line in file:
+                        seq = line.strip()
+                        if seq.startswith('>'):
+                                            ID = seq[1:]  # Store the ID without the '>'
+                        else:
+                                            gc = 0 + seq.count('G') + seq.count('C')
+                                            gc_content = gc / len(seq.strip()) * 100
+                                            if gc_content > highest_gc_content:
+                                                                highest_gc_content = gc_content
+                                                                highest_gc_id = ID
+    print(f'{highest_gc_id} {highest_gc_content:.6f}')
+
+    
+               
 
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
 
-'''for fh in file:
-    gc = 0
-    for line in fh:
-                        if char[0] == '<' :
-                                            ID = line[1:]
-                        else:
-                                            seq = line.strip()
-                                            gc = gc + seq.count('G') + seq.count('C')
-                                            gc_content = gc / len(seq) * 100
-                                            print(f'{ID} {gc_content:.1f}')'''
 
- ''' for line in file:
-           seq = line.strip()
-           if seq:  # Check if the line is not empty
-               gc = seq.count('G') + seq.count('C')
-               gc_content = gc / len(seq) * 100
-               print(f'{seq[:10]} {gc_content:.1f}')  # Display an identifier and GC content'''
+
+               
