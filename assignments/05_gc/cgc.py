@@ -13,15 +13,14 @@ def get_args():
     """Compute GC content"""
 
     parser = argparse.ArgumentParser(
-        description='Compute GC content',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description="Compute GC content",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
 
-    parser.add_argument('FILE',
-                        metavar='FILE',
-                        help='Input sequence file',
-                        type=argparse.FileType('rt'))
+    parser.add_argument(
+        "FILE", metavar="FILE", help="Input sequence file", type=argparse.FileType("rt")
+    )
 
- 
     return parser.parse_args()
 
 
@@ -34,26 +33,20 @@ def main():
 
     highest_gc_content = 0.0
     highest_gc_id = ""
-    ID = ''
+    ID = ""
     for line in file:
-                        seq = line.strip()
-                        if seq.startswith('>'):
-                                            ID = seq[1:]  # Store the ID without the '>'
-                        else:
-                                            gc = 0 + seq.count('G') + seq.count('C')
-                                            gc_content = gc / len(seq.strip()) * 100
-                                            if gc_content > highest_gc_content:
-                                                                highest_gc_content = gc_content
-                                                                highest_gc_id = ID
-    print(f'{highest_gc_id} {highest_gc_content:.6f}')
+        seq = line.strip()
+        if seq.startswith(">"):
+            ID = seq[1:]  # Store the ID without the '>'
+        else:
+            gc = 0 + seq.count("G") + seq.count("C")
+            gc_content = gc / len(seq.strip()) * 100
+            if gc_content > highest_gc_content:
+                highest_gc_content = gc_content
+                highest_gc_id = ID
+    print(f"{highest_gc_id} {highest_gc_content:.6f}")
 
-    
-               
 
 # --------------------------------------------------
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-
-
-
-               
