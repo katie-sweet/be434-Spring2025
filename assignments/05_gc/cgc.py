@@ -72,6 +72,7 @@ def main():
             highest_gc_id = ID
 
     print(f"{highest_gc_id} {highest_gc_content:.6f}")
+    print(f"{file}")
 
 
 # --------------------------------------------------
