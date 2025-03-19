@@ -6,7 +6,6 @@ Purpose: Transcribe DNA to RNA
 """
 
 import argparse
-import sys
 import os
 
 # --------------------------------------------------
@@ -22,7 +21,7 @@ def get_args():
         help='Input DNA File',
         type=argparse.FileType("rt"),
         nargs="+",
-        default=sys.stdin,)
+        )
 
     parser.add_argument('-o',
         '--outdir',
@@ -46,25 +45,31 @@ def main():
     #if os.path.isdir(out_dir):
         #out_file = open(out_dir, 'wt')
 
-        # open out file and input file
-        for file in args.file:
-            out_file = os.path.join(out_dir, os.path.basename(file.name))
-        
-            # open input file
-            input = file.read().rstrip()
-            text=' '
-            # convert DNA to RNA
-            for line in input:
-                text = input.replace("T", "U")
-                out_dir.write(text)
-                #print(f"{text}", file=out_file)
+    # open out file and input file
+    num_files, num_seqs = 0, 0
+    for file in args.file:
+        num_files +=1
+        out_file = os.path.join(out_dir, os.path.basename(file.name))
+        out_fh = open(out_file, 'wt')
+
+        # open input file
+        #input = file.read().rstrip()
+        text=' '
+        # convert DNA to RNA
+        for line in file:
+            num_seqs += 1
+            out_fh.write(line.replace("T", "U"))
+            #text = file.replace("T", "U")
+            #out_dir.write()
+            #print(f"{text}", file=out_file)
+        out_fh.close()
 
     # print summary to stdout
-    if len(args.file) == 1:
-        print(f'Done, wrote {len(args.file)} sequence in {len(args.file)} file to directory "{out_dir}".', file=sys.stdout)
+    if  == 1:
+        print(f'Done, wrote {num_seqs} sequence in {num_files} file to directory "{out_dir}".')
         
     else:
-        print(f'Done, wrote {len(args.file)} sequences in {len(args.file)} files to directory "{out_dir}".', file=sys.stdout)
+        print(f'Done, wrote {num_seqs} sequences in {num_files} files to directory "{out_dir}".')
 
     #if os.path.isdir(out_dir):
     #shutil.rmtree(out_dir)
