@@ -44,8 +44,6 @@ def main():
     # check if out_dir exists and create it if not
     if not os.path.isdir(args.outdir):
         os.makedirs(args.outdir)
-    #if os.path.isdir(out_dir):
-        #out_file = open(out_dir, 'wt')
 
     # open out file and input file
     num_files, num_seqs = 0, 0
@@ -56,10 +54,11 @@ def main():
 
         # open input file
         #input = file.read().rstrip()
-        text=' '
+        #text=' '
         # convert DNA to RNA
         for line in file:
             num_seqs += 1
+            #out_fh.write(f'==> {out_dir}/{file.name} <==\n')
             out_fh.write(line.replace("T", "U"))
             #text = file.replace("T", "U")
             #out_dir.write()
@@ -67,9 +66,10 @@ def main():
         out_fh.close()
 
     # print summary to stdout
-    if  == 1:
+    if num_files == 1 and num_seqs ==1 :
         print(f'Done, wrote {num_seqs} sequence in {num_files} file to directory "{out_dir}".')
-        
+    elif num_files == 1 and num_seqs !=1 :
+        print(f'Done, wrote {num_seqs} sequences in {num_files} file to directory "{out_dir}".')
     else:
         print(f'Done, wrote {num_seqs} sequences in {num_files} files to directory "{out_dir}".')
 
