@@ -8,7 +8,6 @@ Purpose: Transcribe DNA to RNA
 import argparse
 import os
 
-# I changed this
 
 # --------------------------------------------------
 def get_args():
@@ -52,17 +51,15 @@ def main():
         out_file = os.path.join(out_dir, os.path.basename(file.name))
         out_fh = open(out_file, 'wt')
 
-        # open input file
-        #input = file.read().rstrip()
-        #text=' '
         # convert DNA to RNA
         for line in file:
             num_seqs += 1
             #out_fh.write(f'==> {out_dir}/{file.name} <==\n')
-            out_fh.write(line.replace("T", "U"))
-            #text = file.replace("T", "U")
-            #out_dir.write()
-            #print(f"{text}", file=out_file)
+            if num_files == 1:
+                out_fh.write(line.replace("T", "U"))
+            else:
+                out_fh.write(f'==> {out_file} <==\n{line.replace("T", "U")}\n')
+    
         out_fh.close()
 
     # print summary to stdout
@@ -72,6 +69,11 @@ def main():
         print(f'Done, wrote {num_seqs} sequences in {num_files} file to directory "{out_dir}".')
     else:
         print(f'Done, wrote {num_seqs} sequences in {num_files} files to directory "{out_dir}".')
+
+
+# --------------------------------------------------
+if __name__ == '__main__':
+    main()
 
     #if os.path.isdir(out_dir):
     #shutil.rmtree(out_dir)
@@ -95,8 +97,3 @@ def main():
 
 #print(f"{text}", file=output)
 #print('Done, wrote 1 sequence in 1 file to directory "out".', file=sys.stdout)
-
-
-# --------------------------------------------------
-if __name__ == '__main__':
-    main()

@@ -1,0 +1,6 @@
+==> out/input2.txt <==
+UUAGCCCAGACUAGGACUUU
+
+==> out/input2.txt <==
+AACUAGUCAAAGUACACC
+
