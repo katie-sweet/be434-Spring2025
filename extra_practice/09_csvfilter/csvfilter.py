@@ -79,7 +79,7 @@ def main():
                 sys.exit(1)
         
         with open(args.outfile.name, mode='w', newline='') as outfile:
-            writer = csv.DictWriter(args.outfile, fieldnames=reader.fieldnames)
+            writer = csv.DictWriter(args.outfile, fieldnames=reader.fieldnames, delimiter=args.delimiter)
             writer.writeheader()
 
             records_written = 0
