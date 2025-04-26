@@ -97,3 +97,5 @@ if __name__ == '__main__':
 
 #print(f"{text}", file=output)
 #print('Done, wrote 1 sequence in 1 file to directory "out".', file=sys.stdout)
+
+

@@ -244,3 +244,22 @@ Be sure to print the name of the file when searching more than one input file, a
 ## Author
 
 Ken Youens-Clark <kyclark@gmail.com>
+
+
+
+
+
+    if len(args.FILE) > 1:
+        for file in args.FILE:
+            input = open(file.name).read().rstrip()
+            sentences = input.split('\n')
+            for line in sentences:
+                if re.search(args.PATTERN, line):
+                    print(file.name,":",line)
+    else:
+        for file in args.FILE:
+            input = open(file.name).read().rstrip()
+            sentences = input.split('\n')
+            for line in sentences:
+                if re.search(args.PATTERN, line):
+                    print(line)
